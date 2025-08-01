@@ -30,6 +30,33 @@ public class Project : ModuleRules
 
 		PublicIncludePaths.Add("Project");
 		
+		PublicIncludePaths.Add("Project/GamePlay");
+		PublicIncludePaths.Add("Project/GamePlay/Controller");
+		PublicIncludePaths.Add("Project/GamePlay/Controller/Player");
+		PublicIncludePaths.Add("Project/GamePlay/Controller/NPC");
+		PublicIncludePaths.Add("Project/GamePlay/Component");
+		PublicIncludePaths.Add("Project/GamePlay/GameInstance");
+		PublicIncludePaths.Add("Project/GamePlay/GameMode");
+		PublicIncludePaths.Add("Project/GamePlay/GameState");
+		PublicIncludePaths.Add("Project/GamePlay/PlayerState");
+		PublicIncludePaths.Add("Project/GamePlay/Pawn");
+		PublicIncludePaths.Add("Project/GamePlay/Pawn/Horse");
+		PublicIncludePaths.Add("Project/GamePlay/Pawn/Human");
+		PublicIncludePaths.Add("Project/GamePlay/WorldSetting");
+		PublicIncludePaths.Add("Project/GamePlay/PlayerCameraManager");
+		PublicIncludePaths.Add("Project/GamePlay/GameViewportClient");
+		
+		PublicIncludePaths.Add("Project/Command");
+		PublicIncludePaths.Add("Project/Common");
+		PublicIncludePaths.Add("Project/AssetRefMap");
+		
+		PublicIncludePaths.Add("Project/Imp_InputProcessor");
+		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputActions");
+		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor");
+		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor/HumanProcessor");
+		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor/HumanProcessor/ActionProcessor");
+		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor/TourProcessor/ActionProcessor");
+
 		PrivateIncludePaths.Add("Project/Private");
 
 		if (Target.bBuildEditor == true)
