@@ -4,9 +4,7 @@
 #include "Blueprint/WidgetBlueprintLibrary.h"
 
 FInputProcessor::FInputProcessor(
-	FOwnerPawnType* CharacterPtr
-	) :
-	  OnwerPawnPtr(CharacterPtr)
+	) 
 {
 }
 
@@ -94,13 +92,6 @@ bool FInputProcessor::InputAxis(
 bool FInputProcessor::GetIsComplete() const
 {
 	return AsyncTaskNum == 0;
-}
-
-void FInputProcessor::SetPawn(
-	FOwnerPawnType* NewPawnPtr
-	)
-{
-	OnwerPawnPtr = NewPawnPtr;
 }
 
 void FInputProcessor::UnRegisterTicker()

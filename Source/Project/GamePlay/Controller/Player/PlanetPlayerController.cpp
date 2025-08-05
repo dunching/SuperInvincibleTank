@@ -2,8 +2,8 @@
 
 #include "InputProcessorSubSystem_Imp.h"
 #include "PlayerGameplayTasks.h"
-#include "ViewBuildingProcessor.h"
-#include "ViewerPawn.h"
+#include "StartingProcessor.h"
+#include "AllocationPawn.h"
 #include "TourPawn.h"
 #include "PixelStreamingInputComponent.h"
 
@@ -13,10 +13,24 @@ APlanetPlayerController::APlanetPlayerController(const FObjectInitializer& Objec
 	GameplayTasksComponentPtr = CreateDefaultSubobject<UPlayerControllerGameplayTasksComponent>(
 		UPlayerControllerGameplayTasksComponent::ComponentName
 	);
+}
 
-	PixelStreamingInputPtr = CreateDefaultSubobject<UPixelStreamingInput>(
-		TEXT("PixelStreamingInput")
-	);
+void APlanetPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+#if UE_EDITOR || UE_CLIENT
+	if (GetLocalRole() == ROLE_AutonomousProxy)
+	{
+		UInputProcessorSubSystem_Imp::GetInstance()->SwitchToProcessor<Processors::FStartingProcessor>(
+			[this](
+			auto NewProcessor
+		)
+			{
+			}
+		);
+	}
+#endif
 }
 
 void APlanetPlayerController::OnPossess(APawn* InPawn)
@@ -28,12 +42,16 @@ void APlanetPlayerController::OnPossess(APawn* InPawn)
 	if (bIsNewPawn)
 	{
 	}
+}
 
-	UInputProcessorSubSystem_Imp::GetInstance()->SwitchToProcessor<TourProcessor::FViewBuildingProcessor>(
-		[this, InPawn](
-		auto NewProcessor
+void APlanetPlayerController::OnRep_Pawn()
+{
+	Super::OnRep_Pawn();
+}
+
+void APlanetPlayerController::Possess_Server_Implementation(
+	APawn* InPawn
 	)
-		{
-		}
-	);
+{
+	Possess(InPawn);
 }

@@ -1,4 +1,4 @@
-#include "ViewerPawn.h"
+#include "AllocationPawn.h"
 
 #include "Components/SphereComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
@@ -7,7 +7,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-AViewerPawn::AViewerPawn(const FObjectInitializer& ObjectInitializer):
+AAllocationPawn::AAllocationPawn(const FObjectInitializer& ObjectInitializer):
 	Super(
 		ObjectInitializer)
 {

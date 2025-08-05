@@ -23,13 +23,11 @@ public:
 
 	GENERATIONCLASSINFOONLYTHIS(FInputProcessor);
 
-	using FOwnerPawnType = APawn;
-
 	using FOnQuitComplete = std::function<void()>;
 
 	using FOnQuitFunc = std::function<void()>;
 
-	FInputProcessor(FOwnerPawnType* CharacterPtr);
+	FInputProcessor();
 
 	virtual ~FInputProcessor();
 
@@ -40,9 +38,6 @@ public:
 	FInputProcessor& operator=(const FInputProcessor&) = delete;
 
 	FInputProcessor& operator=(FInputProcessor&&) = delete;
-
-	template<typename Type = FOwnerPawnType>
-	Type* GetOwnerActor() { return Cast<Type>(OnwerPawnPtr); }
 
 	// 
 	virtual void EnterAction();
@@ -70,8 +65,6 @@ public:
 
 	bool GetIsRequestQuit()const;
 
-	void SetPawn(FOwnerPawnType*NewPawnPtr);
-
 	void UnRegisterTicker();
 
 	void SetOnQuitFunc(const FOnQuitFunc& InOnQuitFunc);
@@ -85,8 +78,6 @@ protected:
 	virtual void TickImp(float Delta);
 
 	void SwitchShowCursor(bool bIsShowCursor);
-
-	FOwnerPawnType* OnwerPawnPtr = nullptr;
 
 private:
 

@@ -20,7 +20,7 @@ void UInputProcessorSubSystemBase::Initialize(
 {
 	Super::Initialize(Collection);
 
-	CurrentProcessorSPtr = MakeShared<FInputProcessor>(nullptr);
+	CurrentProcessorSPtr = MakeShared<FInputProcessor>();
 
 	TickDelegateHandle = FTSTicker::GetCoreTicker().AddTicker(
 		FTickerDelegate::CreateUObject(this, &ThisClass::Tick),
@@ -184,7 +184,7 @@ void UInputProcessorSubSystemBase::SwitchShowCursor(
 		{
 			PlayerPCPtr->SetShowMouseCursor(true);
 
-			UWidgetBlueprintLibrary::SetInputMode_GameAndUIEx(PlayerPCPtr);
+			UWidgetBlueprintLibrary::SetInputMode_UIOnlyEx(PlayerPCPtr);
 		}
 		else
 		{

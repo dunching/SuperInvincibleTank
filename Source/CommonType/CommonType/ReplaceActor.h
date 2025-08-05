@@ -13,7 +13,7 @@ class USphereComponent;
 class UFloatingPawnMovement;
 class USpringArmComponent;
 class UCameraComponent;
-class AViewerPawn;
+class AAllocationPawn;
 
 /**
  * 雷达扫描效果

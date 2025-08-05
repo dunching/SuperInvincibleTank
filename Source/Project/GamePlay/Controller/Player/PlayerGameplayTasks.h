@@ -15,7 +15,7 @@
 
 #include "PlayerGameplayTasks.generated.h"
 
-class AViewerPawn;
+class AAllocationPawn;
 class USceneInteractionWorldSystem;
 class ADatasmithSceneActor;
 class AReplaceActor;

@@ -7,7 +7,7 @@
 #include "GameplayTagContainer.h"
 #include "GameFramework/Pawn.h"
 
-#include "ViewerPawn.generated.h"
+#include "AllocationPawn.generated.h"
 
 class UPlayerComponent;
 class USphereComponent;
@@ -16,17 +16,17 @@ class USpringArmComponent;
 class UCameraComponent;
 
 /**
- * 机位
+ * 装配界面的Pawn
  */
 UCLASS()
-class PROJECT_API AViewerPawn :
+class PROJECT_API AAllocationPawn :
 	public APawn
 {
 	GENERATED_BODY()
 
 public:
 
-	AViewerPawn(
+	AAllocationPawn(
 		const FObjectInitializer& ObjectInitializer
 		);
 

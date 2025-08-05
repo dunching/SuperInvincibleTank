@@ -51,12 +51,13 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/AssetRefMap");
 		
 		PublicIncludePaths.Add("Project/Imp_InputProcessor");
-		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputActions");
 		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor");
-		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor/HumanProcessor");
-		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor/HumanProcessor/ActionProcessor");
-		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor/TourProcessor/ActionProcessor");
 
+		PublicIncludePaths.Add("Project/UI");
+		PublicIncludePaths.Add("Project/UI/Layout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/StartingLayout");
+		
 		PrivateIncludePaths.Add("Project/Private");
 
 		if (Target.bBuildEditor == true)

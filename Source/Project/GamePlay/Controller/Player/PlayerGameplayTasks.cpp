@@ -11,7 +11,7 @@
 #include "GameOptions.h"
 #include "Algorithm.h"
 #include "TourPawn.h"
-#include "ViewerPawn.h"
+#include "AllocationPawn.h"
 #include "Tools.h"
 #include "GameplayTagsLibrary.h"
 #include "DatasmithSceneActor.h"

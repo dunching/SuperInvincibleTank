@@ -86,15 +86,16 @@ public:
 
 	void SwitchShowCursor(bool bIsShowCursor);
 
-protected:
 	template <typename ProcessorType>
-	void SwitchToProcessorBase();
+	void SwitchToProcessor();
 
 	template <typename ProcessorType>
-	void SwitchToProcessorBase(
+	void SwitchToProcessor(
 		const FInitSwitchFunc<ProcessorType>& InitSwitchFunc,
 		const FOnQuitFunc& OnQuitFunc = nullptr
 		);
+	
+protected:
 
 	UFUNCTION()
 	bool Tick(
@@ -117,13 +118,13 @@ private:
 };
 
 template <typename ProcessorType>
-void UInputProcessorSubSystemBase::SwitchToProcessorBase()
+void UInputProcessorSubSystemBase::SwitchToProcessor()
 {
-	SwitchToProcessorBase<ProcessorType>(nullptr);
+	SwitchToProcessor<ProcessorType>(nullptr);
 }
 
 template <typename ProcessorType>
-void UInputProcessorSubSystemBase::SwitchToProcessorBase(
+void UInputProcessorSubSystemBase::SwitchToProcessor(
 	const FInitSwitchFunc<ProcessorType>& InitSwitchFunc,
 		const FOnQuitFunc& OnQuitFunc
 	)
@@ -144,9 +145,7 @@ void UInputProcessorSubSystemBase::SwitchToProcessorBase(
 
 	TSharedPtr<ProcessorType> ActionProcessSPtr;
 
-	auto PawnPtr = GEngine->GetFirstLocalPlayerController(GetWorldImp())->GetPawn();
-	auto CharacterPtr = Cast<typename ProcessorType::FOwnerPawnType>(PawnPtr);
-	ActionProcessSPtr = MakeShared<ProcessorType>(CharacterPtr);
+	ActionProcessSPtr = MakeShared<ProcessorType>();
 	ActionProcessSPtr->OnQuitFunc = OnQuitFunc;
 
 	if (InitSwitchFunc)

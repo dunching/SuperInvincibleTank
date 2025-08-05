@@ -15,7 +15,7 @@ class USphereComponent;
 class UFloatingPawnMovement;
 class USpringArmComponent;
 class UCameraComponent;
-class AViewerPawn;
+class AAllocationPawn;
 
 /**
  * 漫游Pawn

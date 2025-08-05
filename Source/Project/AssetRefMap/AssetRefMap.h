@@ -10,6 +10,8 @@
 
 #include "AssetRefMap.generated.h"
 
+class AAllocationPawn;
+
 UCLASS(BlueprintType, Blueprintable)
 class PROJECT_API UAssetRefMap : public UAssetRefBase
 {
@@ -20,4 +22,6 @@ public:
 
 	static UAssetRefMap* GetInstance();
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TSoftObjectPtr<AAllocationPawn>AllocationPawnRef;
 };

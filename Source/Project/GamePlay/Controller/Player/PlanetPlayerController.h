@@ -31,14 +31,20 @@ public:
 		const FObjectInitializer& ObjectInitializer
 		);
 
+	virtual void BeginPlay() override;
+
 	virtual void OnPossess(
 		APawn* InPawn
 		) override;
+	
+	virtual void OnRep_Pawn() override;
 
+#pragma region RPC
+	UFUNCTION(Server,Reliable)
+	void Possess_Server(APawn* InPawn);
+#pragma endregion 
+	
 	UPROPERTY()
 	TObjectPtr<UPlayerControllerGameplayTasksComponent> GameplayTasksComponentPtr = nullptr;
-
-	UPROPERTY()
-	TObjectPtr<UPixelStreamingInput> PixelStreamingInputPtr = nullptr;
 
 };
