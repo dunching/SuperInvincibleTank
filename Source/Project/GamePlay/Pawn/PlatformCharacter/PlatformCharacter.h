@@ -6,7 +6,7 @@
 
 #include "GameFramework/Character.h"
 
-#include "HumanCharacter.generated.h"
+#include "PlatformCharacter.generated.h"
 
 class UInputComponent;
 class UGravitySpringComponent;
@@ -24,14 +24,14 @@ struct FSkillProxy;
 struct FConsumableProxy;
 
 UCLASS()
-class PROJECT_API AHumanCharacter :
+class PROJECT_API APlatformCharacter :
 	public ACharacter
 {
 	GENERATED_BODY()
 
 public:
 
-	AHumanCharacter(const FObjectInitializer& ObjectInitializer);
+	APlatformCharacter(const FObjectInitializer& ObjectInitializer);
 
 protected:
 

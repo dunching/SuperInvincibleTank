@@ -1,4 +1,4 @@
-#include "TourPawn.h"
+#include "StartignPawn.h"
 
 #include "GameOptions.h"
 #include "Components/SphereComponent.h"
@@ -8,7 +8,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-ATourPawn::ATourPawn(const FObjectInitializer& ObjectInitializer):
+AStartignPawn::AStartignPawn(const FObjectInitializer& ObjectInitializer):
 	Super(
 		ObjectInitializer)
 {
@@ -35,21 +35,21 @@ ATourPawn::ATourPawn(const FObjectInitializer& ObjectInitializer):
 	MovementComponent->UpdatedComponent = CollisionComponent;
 }
 
-void ATourPawn::PossessedBy(AController* NewController)
+void AStartignPawn::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
 	PlayerComponentPtr->PossessedBy(Cast<APlayerController>(NewController));
 }
 
-void ATourPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AStartignPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	PlayerComponentPtr->SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void ATourPawn::LerpToSeat(const FTransform& Transform, float SpringArmLen)
+void AStartignPawn::LerpToSeat(const FTransform& Transform, float SpringArmLen)
 {
 	const auto Rot = Transform.GetRotation().Rotator();
 	
@@ -62,7 +62,7 @@ void ATourPawn::LerpToSeat(const FTransform& Transform, float SpringArmLen)
 	GetController()->SetControlRotation(Rot);
 }
 
-void ATourPawn::UpdateControlParam(
+void AStartignPawn::UpdateControlParam(
 	const FControlParam& ControlParam
 	)
 {

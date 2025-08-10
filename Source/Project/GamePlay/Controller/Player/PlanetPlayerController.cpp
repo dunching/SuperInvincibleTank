@@ -4,7 +4,7 @@
 #include "PlayerGameplayTasks.h"
 #include "StartingProcessor.h"
 #include "AllocationPawn.h"
-#include "TourPawn.h"
+#include "StartignPawn.h"
 #include "PixelStreamingInputComponent.h"
 
 APlanetPlayerController::APlanetPlayerController(const FObjectInitializer& ObjectInitializer) :

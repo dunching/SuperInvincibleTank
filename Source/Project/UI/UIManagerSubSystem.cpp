@@ -5,6 +5,7 @@
 
 #include "TemplateHelper.h"
 #include "Tools.h"
+#include "HUD/MainHUD.h"
 
 struct FUIManagerSubSystem : public TStructVariable<FUIManagerSubSystem>
 {
@@ -45,4 +46,9 @@ void UUIManagerSubSystem::Initialize(
 	)
 {
 	Super::Initialize(Collection);
+}
+
+UMainHUDLayout* UUIManagerSubSystem::GetMainHUDLayout() const
+{
+	return Cast<AMainHUD>(GEngine->GetFirstLocalPlayerController(GetWorld())->GetHUD())->GetMainHUDLayout();
 }

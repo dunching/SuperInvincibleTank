@@ -1,5 +1,5 @@
 
-#include "HumanCharacter.h"
+#include "PlatformCharacter.h"
 
 #include "Components/InputComponent.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -17,12 +17,12 @@
 #include "HumanAIController.h"
 #include "SceneActorInteractionComponent.h"
 
-AHumanCharacter::AHumanCharacter(const FObjectInitializer& ObjectInitializer) :
+APlatformCharacter::APlatformCharacter(const FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer)
 {
 }
 
-void AHumanCharacter::BeginPlay()
+void APlatformCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -42,17 +42,17 @@ void AHumanCharacter::BeginPlay()
 #endif
 }
 
-void AHumanCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
+void APlatformCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
 }
 
-void AHumanCharacter::OnConstruction(const FTransform& Transform)
+void APlatformCharacter::OnConstruction(const FTransform& Transform)
 {
 	Super::OnConstruction(Transform);
 }
 
-void AHumanCharacter::PossessedBy(AController* NewController)
+void APlatformCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
@@ -64,7 +64,7 @@ void AHumanCharacter::PossessedBy(AController* NewController)
 	}
 }
 
-void AHumanCharacter::UnPossessed()
+void APlatformCharacter::UnPossessed()
 {
 	Super::UnPossessed();
 }

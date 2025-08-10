@@ -42,6 +42,8 @@ public:
 		FSubsystemCollectionBase& Collection
 		) override;
 
+	UMainHUDLayout* GetMainHUDLayout() const;
+
 protected:
 
 private:

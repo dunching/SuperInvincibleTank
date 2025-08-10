@@ -8,7 +8,7 @@
 
 #include "GameOptions.h"
 
-#include "TourPawn.generated.h"
+#include "StartignPawn.generated.h"
 
 class UPlayerComponent;
 class USphereComponent;
@@ -18,17 +18,17 @@ class UCameraComponent;
 class AAllocationPawn;
 
 /**
- * 漫游Pawn
+ * 开始界面的Pawn
  */
 UCLASS()
-class PROJECT_API ATourPawn :
+class PROJECT_API AStartignPawn :
 	public APawn
 {
 	GENERATED_BODY()
 
 public:
 
-	ATourPawn(
+	AStartignPawn(
 		const FObjectInitializer& ObjectInitializer
 		);
 

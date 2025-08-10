@@ -5,7 +5,7 @@
 
 #include "GameOptions.h"
 #include "AllocationPawn.h"
-#include "TourPawn.h"
+#include "StartignPawn.h"
 
 Processors::FPlayingProcessor::FPlayingProcessor(
 	)

@@ -6,6 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "InputProcessor.h"
+#include "TemplateHelper.h"
 
 #include "Components/ActorComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -30,7 +31,7 @@ class STATEPROCESSOR_API IGetInputProcessorSubSystemInterface
 	GENERATED_BODY()
 
 public:
-	virtual UInputProcessorSubSystemBase* GetInputProcessorSubSystem()const = 0;
+	virtual UInputProcessorSubSystemBase* GetInputProcessorSubSystem() const = 0;
 };
 
 /**
@@ -49,6 +50,7 @@ public:
 	template <typename ProcessorType>
 	using FInitSwitchFunc = std::function<void(
 		ProcessorType*
+		
 		)>;
 
 	using FOnQuitFunc = std::function<void()>;
@@ -60,6 +62,9 @@ public:
 		) override;
 
 	virtual void Deinitialize() override;
+
+	template <typename ProcessorType>
+	TSharedPtr<ProcessorType> TryGetCurrentAction() const;
 
 	TSharedPtr<FInputProcessor>& GetCurrentAction();
 
@@ -81,10 +86,12 @@ public:
 		);
 
 	virtual bool InputAxis(
-	const FInputKeyEventArgs& EventArgs
+		const FInputKeyEventArgs& EventArgs
 		);
 
-	void SwitchShowCursor(bool bIsShowCursor);
+	void SwitchShowCursor(
+		bool bIsShowCursor
+		);
 
 	template <typename ProcessorType>
 	void SwitchToProcessor();
@@ -94,9 +101,8 @@ public:
 		const FInitSwitchFunc<ProcessorType>& InitSwitchFunc,
 		const FOnQuitFunc& OnQuitFunc = nullptr
 		);
-	
-protected:
 
+protected:
 	UFUNCTION()
 	bool Tick(
 		float DeltaTime
@@ -114,8 +120,13 @@ private:
 	bool bIsRunning = true;
 
 	FTSTicker::FDelegateHandle TickDelegateHandle;
-
 };
+
+template <typename ProcessorType>
+TSharedPtr<ProcessorType> UInputProcessorSubSystemBase::TryGetCurrentAction() const
+{
+	return DynamicCastSharedPtr<ProcessorType>(CurrentProcessorSPtr);
+}
 
 template <typename ProcessorType>
 void UInputProcessorSubSystemBase::SwitchToProcessor()
@@ -126,11 +137,11 @@ void UInputProcessorSubSystemBase::SwitchToProcessor()
 template <typename ProcessorType>
 void UInputProcessorSubSystemBase::SwitchToProcessor(
 	const FInitSwitchFunc<ProcessorType>& InitSwitchFunc,
-		const FOnQuitFunc& OnQuitFunc
+	const FOnQuitFunc& OnQuitFunc
 	)
 {
 	if constexpr (
-		(std::is_same_v<ProcessorType, FInputProcessor>) 
+		(std::is_same_v<ProcessorType, FInputProcessor>)
 	)
 	{
 		return;

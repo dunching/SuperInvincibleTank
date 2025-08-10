@@ -12,7 +12,7 @@ class UInventoryComponent;
 class UCharacterAttributesComponent;
 class UTalentAllocationComponent;
 struct FCharacterProxy;
-class AHumanCharacter;
+class APlatformCharacter;
 class ACharacterBase;
 
 UINTERFACE(MinimalAPI, meta = (CannotImplementInterfaceInBlueprint))

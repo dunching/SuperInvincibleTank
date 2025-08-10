@@ -3,34 +3,31 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameplayTagContainer.h"
 
 #include "UserWidget_Override.h"
+#include "LayoutWidgetBase.h"
 
-#include "LayoutWidgetBase.generated.h"
+#include "AllocationLayout.generated.h"
 
 class UMainHUDLayout;
 class UOverlaySlot;
 class UUserWidget;
+class UButton;
 
 
 /**
  *
  */
 UCLASS()
-class PROJECT_API ULayoutWidgetBase :
-	public UUserWidget_Override
+class PROJECT_API UAllocationLayout :
+	public ULayoutWidgetBase
 {
 	GENERATED_BODY()
 
 public:
 
-	UPROPERTY(BlueprintReadWrite,
-		EditAnywhere)
-	FGameplayTag LayoutTag;
-	
-protected:
-private:
+	virtual void NativeConstruct() override;
 
+private:
 
 };

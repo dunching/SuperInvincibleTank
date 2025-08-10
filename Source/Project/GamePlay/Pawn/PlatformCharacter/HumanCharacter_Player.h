@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 
-#include "HumanCharacter.h"
+#include "PlatformCharacter.h"
 #include "SceneActorInteractionComponent.h"
 
 #include "HumanCharacter_Player.generated.h"
@@ -20,7 +20,7 @@ class UInteractionList;
 class AHumanCharacter_Player;
 
 UCLASS()
-class PROJECT_API AHumanCharacter_Player : public AHumanCharacter
+class PROJECT_API AHumanCharacter_Player : public APlatformCharacter
 {
 	GENERATED_BODY()
 

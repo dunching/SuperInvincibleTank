@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 
-class AHumanCharacter;
+class APlatformCharacter;
 
 namespace SmartCityCommand
 {

@@ -10,6 +10,7 @@
 
 #include "AssetRefMap.generated.h"
 
+class APlatformCharacter;
 class AAllocationPawn;
 
 UCLASS(BlueprintType, Blueprintable)
@@ -24,4 +25,7 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TSoftObjectPtr<AAllocationPawn>AllocationPawnRef;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TMap<FGameplayTag, TSubclassOf<APlatformCharacter>>PlatformCharacterMap;
 };

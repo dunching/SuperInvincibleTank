@@ -6,11 +6,13 @@
 
 #include "InputProcessor.h"
 #include "GenerateTypes.h"
+#include "PlatformCharacter.h"
 
 class ATrackVehicleBase;
-class ATourPawn;
+class AStartignPawn;
 class AHorseCharacter;
 class ABuildingBase;
+class APlatformCharacter;
 
 namespace Processors
 {
@@ -23,7 +25,7 @@ namespace Processors
 		GENERATIONCLASSINFO(FAllocationProcessor, FInputProcessor);
 
 	public:
-		using FOwnerPawnType = ATourPawn;
+		using FOwnerPawnType = AStartignPawn;
 
 		FAllocationProcessor();
 
@@ -32,5 +34,11 @@ namespace Processors
 		virtual bool InputKey(
 			const FInputKeyEventArgs& EventArgs
 		) override;
+
+		void SelectedPlatformType(const FGameplayTag&PlatformTypeTag);
+
+		FGameplayTag CurrentPlatformTypeTag;
+		
+		TObjectPtr<APlatformCharacter>CurrentPlatformCharacterPtr = nullptr;
 	};
 }

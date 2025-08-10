@@ -40,8 +40,7 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/GamePlay/GameState");
 		PublicIncludePaths.Add("Project/GamePlay/PlayerState");
 		PublicIncludePaths.Add("Project/GamePlay/Pawn");
-		PublicIncludePaths.Add("Project/GamePlay/Pawn/Horse");
-		PublicIncludePaths.Add("Project/GamePlay/Pawn/Human");
+		PublicIncludePaths.Add("Project/GamePlay/Pawn/PlatformCharacter");
 		PublicIncludePaths.Add("Project/GamePlay/WorldSetting");
 		PublicIncludePaths.Add("Project/GamePlay/PlayerCameraManager");
 		PublicIncludePaths.Add("Project/GamePlay/GameViewportClient");
@@ -57,6 +56,8 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/UI/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout/StartingLayout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/AllocationLayout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/PlayingLayout");
 		
 		PrivateIncludePaths.Add("Project/Private");
 

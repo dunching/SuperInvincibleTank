@@ -8,7 +8,7 @@
 #include "GenerateTypes.h"
 
 class ATrackVehicleBase;
-class ATourPawn;
+class AStartignPawn;
 class AHorseCharacter;
 class ABuildingBase;
 
@@ -23,7 +23,7 @@ namespace Processors
 		GENERATIONCLASSINFO(FPlayingProcessor, FInputProcessor);
 
 	public:
-		using FOwnerPawnType = ATourPawn;
+		using FOwnerPawnType = AStartignPawn;
 
 		FPlayingProcessor();
 

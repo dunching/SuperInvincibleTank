@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 
 #include "Blueprint/UserWidget.h"
+#include "GameplayTagContainer.h"
 
 #include "MainHUDLayout.generated.h"
 
@@ -19,6 +20,8 @@ class PROJECT_API UMainHUDLayout : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
+	void SwitchLayout(const FGameplayTag&LayoutTag)const;
+	
 	UPROPERTY(meta = (BindWidget))
 	UOverlay* OverlapPtr = nullptr;
 

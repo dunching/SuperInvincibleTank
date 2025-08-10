@@ -10,7 +10,7 @@
 
 #include "GameOptions.h"
 #include "Algorithm.h"
-#include "TourPawn.h"
+#include "StartignPawn.h"
 #include "AllocationPawn.h"
 #include "Tools.h"
 #include "GameplayTagsLibrary.h"
