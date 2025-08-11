@@ -2,6 +2,13 @@
 
 #include <Subsystems/SubsystemBlueprintLibrary.h>
 
+FGameplayTag UGameplayTagsLibrary::Proxy_Coin =
+	FGameplayTag::RequestGameplayTag(FName(TEXT("Proxy.Coin")));
+
+FGameplayTag UGameplayTagsLibrary::Proxy_Coin_Regular =
+	FGameplayTag::RequestGameplayTag(FName(TEXT("Proxy.Coin.Regular")));
+
+
 FGameplayTag UGameplayTagsLibrary::UI_Allocation =
 	FGameplayTag::RequestGameplayTag(FName(TEXT("UI.Allocation")));
 

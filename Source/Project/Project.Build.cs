@@ -45,6 +45,17 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/GamePlay/PlayerCameraManager");
 		PublicIncludePaths.Add("Project/GamePlay/GameViewportClient");
 		
+		PublicIncludePaths.Add("Project/SceneActor");
+		PublicIncludePaths.Add("Project/SceneActor/Biomes");
+		PublicIncludePaths.Add("Project/SceneActor/Consumables");
+		PublicIncludePaths.Add("Project/SceneActor/Equipments");
+		PublicIncludePaths.Add("Project/SceneActor/Equipments/Tools");
+		PublicIncludePaths.Add("Project/SceneActor/Equipments/Weapons");
+		PublicIncludePaths.Add("Project/SceneActor/Building");
+		PublicIncludePaths.Add("Project/SceneActor/Building/BuildingArea");
+		PublicIncludePaths.Add("Project/SceneActor/Projectile");
+		PublicIncludePaths.Add("Project/SceneActor/ResourceBox");
+		
 		PublicIncludePaths.Add("Project/Command");
 		PublicIncludePaths.Add("Project/Common");
 		PublicIncludePaths.Add("Project/AssetRefMap");
@@ -52,7 +63,14 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/Imp_InputProcessor");
 		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor");
 
+		PublicIncludePaths.Add("Project/Imp_ItemProxy");
+		PublicIncludePaths.Add("Project/Imp_ItemProxy/InventoryComponent");
+		PublicIncludePaths.Add("Project/Imp_ItemProxy/ItemProxys");
+		PublicIncludePaths.Add("Project/Imp_ItemProxy/ItemProxy");
+		PublicIncludePaths.Add("Project/Imp_ItemProxy/Visitor");
+
 		PublicIncludePaths.Add("Project/UI");
+		PublicIncludePaths.Add("Project/UI/Hover");
 		PublicIncludePaths.Add("Project/UI/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout/StartingLayout");
@@ -103,6 +121,10 @@ public class Project : ModuleRules
 			"StateProcessor",
 			"Utils",
 			"Weather",
+			"ItemProxy",
+			"GroupManagger",
+			"SceneActor",
+			"NetAbilitySystem",
 			
 			// 其他模块
 			"AssetRef",

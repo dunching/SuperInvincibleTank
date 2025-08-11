@@ -16,6 +16,10 @@ class GAMEPLAYTAGSLIBRARY_API UGameplayTagsLibrary : public UBlueprintFunctionLi
 
 public:
 
+	static FGameplayTag Proxy_Coin;
+
+	static FGameplayTag Proxy_Coin_Regular;
+
 	
 	static FGameplayTag UI_Allocation;
 
