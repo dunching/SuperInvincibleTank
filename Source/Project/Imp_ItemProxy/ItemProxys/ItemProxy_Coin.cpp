@@ -1,11 +1,6 @@
 
 #include "ItemProxy_Coin.h"
 
-#include "AllocationSkills.h"
-#include "InventoryComponentBase.h"
-#include "ItemProxy_Container.h"
-#include "TeamMatesHelperComponent.h"
-
 FCoinProxy::FCoinProxy()
 {
 

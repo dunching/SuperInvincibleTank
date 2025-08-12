@@ -10,60 +10,8 @@
 void UInventoryComponent::InitializeComponent()
 {
 	Super::InitializeComponent();
-
-	//
-	ModifyItemProxyStrategiesMap.Empty();
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_Character>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_Weapon>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_WeaponSkill>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_ActiveSkill>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_PassveSkill>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
 	{
 		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_Coin>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_Consumable>();
-		ModifyItemProxyStrategiesMap.Add(
-		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
-		                                 ModifyItemProxyStrategySPtr
-		                                );
-	}
-	{
-		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_MaterialProxy>();
 		ModifyItemProxyStrategiesMap.Add(
 		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
 		                                 ModifyItemProxyStrategySPtr

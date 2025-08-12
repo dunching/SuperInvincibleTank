@@ -131,18 +131,6 @@ public:
 
 	void UpdateByRemote_Allocationble(const TSharedPtr<IProxy_Allocationble>& RemoteSPtr);
 
-	// 这个物品被分配给的对象
-	TSharedPtr<FCharacterProxy> GetAllocationCharacterProxy();
-
-	TSharedPtr<FCharacterProxy> GetAllocationCharacterProxy() const;
-
-	ACharacterBase* GetAllocationCharacter() const;
-
-	virtual void SetAllocationCharacterProxy(
-		const TSharedPtr<FCharacterProxy>& InAllocationCharacterProxyPtr,
-		const FGameplayTag& InSocketTag
-	);
-
 	virtual void ResetAllocationCharacterProxy();
 
 	FGameplayTag GetCurrentSocketTag() const;

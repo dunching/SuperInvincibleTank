@@ -8,9 +8,6 @@
 #include "Components/SphereComponent.h"
 #include "Net/UnrealNetwork.h"
 
-#include "CollisionDataStruct.h"
-#include "CharacterBase.h"
-
 static TAutoConsoleVariable<int32> ProjectileBase(
                                                   TEXT("Skill.DrawDebug.ProjectileBase"),
                                                   0,

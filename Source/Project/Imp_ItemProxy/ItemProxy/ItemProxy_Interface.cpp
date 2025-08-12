@@ -2,7 +2,6 @@
 
 #include "InventoryComponent.h"
 #include "InventoryComponentBase.h"
-#include "ItemProxy_Character.h"
 #include "ModifyItemProxyStrategy.h"
 #include "ModifyItemProxyStrategyInterface.h"
 
@@ -101,39 +100,10 @@ void IProxy_Allocationble::UpdateByRemote_Allocationble(
 {
 	AllocationCharacter_ID = RemoteSPtr->AllocationCharacter_ID;
 	SocketTag = RemoteSPtr->SocketTag;
-
-	OnAllocationCharacterProxyChanged(GetAllocationCharacterProxy());
 }
 
 void IProxy_Allocationble::ResetAllocationCharacterProxy()
 {
-	// 
-	if (ProxyPtr->GetInventoryComponentBase()->GetNetMode() == NM_Client)
-	{
-		ProxyPtr->GetInventoryComponent()->
-				  SetAllocationCharacterProxy(ProxyPtr->GetID(), FGuid(), FGameplayTag::EmptyTag);
-	}
-
-	// 找到这个物品之前被分配的插槽
-	ProxyPtr->UnAllocation();
-
-	auto PreviousAllocationCharacterProxySPtr = ProxyPtr->GetInventoryComponentBase()->FindProxy<FModifyItemProxyStrategy_Character>(
-		 AllocationCharacter_ID
-		);
-	if (PreviousAllocationCharacterProxySPtr)
-	{
-		auto CharacterSocket = PreviousAllocationCharacterProxySPtr->FindSocket(SocketTag);
-		CharacterSocket.ResetAllocatedProxy();
-
-		PreviousAllocationCharacterProxySPtr->UpdateSocket(CharacterSocket);
-	}
-
-	AllocationCharacter_ID = FGuid();
-	SocketTag = FGameplayTag::EmptyTag;
-
-	OnAllocationCharacterProxyChanged.ExcuteCallback(GetAllocationCharacterProxy());
-
-	ProxyPtr->UpdateData();
 }
 
 FGameplayTag IProxy_Allocationble::GetCurrentSocketTag() const
@@ -158,71 +128,4 @@ void IProxy_Allocationble::SetAllocationCharacterID(
 	)
 {
 	AllocationCharacter_ID = ID;
-}
-
-ACharacterBase* IProxy_Allocationble::GetAllocationCharacter() const
-{
-	auto AllocationCharacterProxySPtr = GetAllocationCharacterProxy();
-	if (AllocationCharacterProxySPtr.IsValid())
-	{
-		return AllocationCharacterProxySPtr->GetCharacterActor().Get();
-	}
-	return nullptr;
-}
-
-TSharedPtr<FCharacterProxy> IProxy_Allocationble::GetAllocationCharacterProxy()
-{
-	return ProxyPtr->GetInventoryComponentBase()->FindProxy<FModifyItemProxyStrategy_Character>(AllocationCharacter_ID);
-}
-
-TSharedPtr<FCharacterProxy> IProxy_Allocationble::GetAllocationCharacterProxy() const
-{
-	return ProxyPtr->GetInventoryComponentBase()->FindProxy<FModifyItemProxyStrategy_Character>(AllocationCharacter_ID);
-}
-
-void IProxy_Allocationble::SetAllocationCharacterProxy(
-	const TSharedPtr<FCharacterProxy>& InAllocationCharacterProxyPtr,
-	const FGameplayTag& InSocketTag
-	)
-{
-	// 这里做一个转发，
-	// 同步到服务器
-	if (ProxyPtr->GetInventoryComponentBase()->GetNetMode() == NM_Client)
-	{
-		if (InAllocationCharacterProxyPtr)
-		{
-			ProxyPtr->GetInventoryComponent()->SetAllocationCharacterProxy(
-																		 ProxyPtr->GetID(),
-																		 InAllocationCharacterProxyPtr->GetID(),
-																		 InSocketTag
-																		);
-		}
-	}
-
-	if (InAllocationCharacterProxyPtr && InSocketTag.IsValid())
-	{
-		if (
-			(AllocationCharacter_ID == InAllocationCharacterProxyPtr->GetID()) &&
-			(SocketTag == InSocketTag)
-		)
-		{
-			return;
-		}
-
-		ProxyPtr->UnAllocation();
-
-		const auto PreviousAllocationCharacter_ID = AllocationCharacter_ID;
-		AllocationCharacter_ID = InAllocationCharacterProxyPtr->GetID();
-		SocketTag = InSocketTag;
-
-		ProxyPtr->Allocation();
-
-		OnAllocationCharacterProxyChanged.ExcuteCallback(GetAllocationCharacterProxy());
-
-		ProxyPtr->UpdateData();
-	}
-	else
-	{
-		ResetAllocationCharacterProxy();
-	}
 }

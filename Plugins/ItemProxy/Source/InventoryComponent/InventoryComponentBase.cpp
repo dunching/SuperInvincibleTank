@@ -73,6 +73,9 @@ void UInventoryComponentBase::InitializeComponent()
 	{
 	}
 #endif
+
+	//
+	ModifyItemProxyStrategiesMap.Empty();
 }
 
 void UInventoryComponentBase::BeginPlay()
