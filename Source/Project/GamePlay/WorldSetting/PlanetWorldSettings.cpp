@@ -35,3 +35,8 @@ UInputProcessorSubSystemBase* APlanetWorldSettings::GetInputProcessorSubSystem()
 										 )
 									);
 }
+
+const UPAD_ItemProxyCollection* APlanetWorldSettings::GetItemProxyCollection() const
+{
+	return PAD_ItemProxyCollectionRef.LoadSynchronous();
+}

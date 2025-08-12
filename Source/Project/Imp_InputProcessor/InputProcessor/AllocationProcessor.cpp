@@ -56,27 +56,27 @@ void Processors::FAllocationProcessor::SelectedPlatformType(
 
 	CurrentPlatformTypeTag = FGameplayTag::EmptyTag;
 	
-	if (PlatformTypeTag.MatchesTag(UGameplayTagsLibrary::Platform_InLand))
+	if (PlatformTypeTag.MatchesTag(UGameplayTagsLibrary::Proxy_Platform_InLand))
 	{
-		if (PlatformTypeTag.MatchesTag(UGameplayTagsLibrary::Platform_InLand_3X5))
+		if (PlatformTypeTag.MatchesTag(UGameplayTagsLibrary::Proxy_Platform_InLand_3X5))
 		{
-			if (UAssetRefMap::GetInstance()->PlatformCharacterMap.Contains(UGameplayTagsLibrary::Platform_InLand_3X5))
+			if (UAssetRefMap::GetInstance()->PlatformCharacterMap.Contains(UGameplayTagsLibrary::Proxy_Platform_InLand_3X5))
 			{
 				CurrentPlatformTypeTag = PlatformTypeTag;
 				CurrentPlatformCharacterPtr = GetWorldImp()->SpawnActor<APlatformCharacter>(
-					UAssetRefMap::GetInstance()->PlatformCharacterMap[UGameplayTagsLibrary::Platform_InLand_3X5],
+					UAssetRefMap::GetInstance()->PlatformCharacterMap[UGameplayTagsLibrary::Proxy_Platform_InLand_3X5],
 					UAssetRefMap::GetInstance()->AllocationPawnRef->GetActorLocation(),
 					FRotator::ZeroRotator
 					);
 			}
 		}
-		else if (PlatformTypeTag.MatchesTag(UGameplayTagsLibrary::Platform_InLand_6X10))
+		else if (PlatformTypeTag.MatchesTag(UGameplayTagsLibrary::Proxy_Platform_InLand_6X10))
 		{
-			if (UAssetRefMap::GetInstance()->PlatformCharacterMap.Contains(UGameplayTagsLibrary::Platform_InLand_6X10))
+			if (UAssetRefMap::GetInstance()->PlatformCharacterMap.Contains(UGameplayTagsLibrary::Proxy_Platform_InLand_6X10))
 			{
 				CurrentPlatformTypeTag = PlatformTypeTag;
 				CurrentPlatformCharacterPtr = GetWorldImp()->SpawnActor<APlatformCharacter>(
-					UAssetRefMap::GetInstance()->PlatformCharacterMap[UGameplayTagsLibrary::Platform_InLand_6X10],
+					UAssetRefMap::GetInstance()->PlatformCharacterMap[UGameplayTagsLibrary::Proxy_Platform_InLand_6X10],
 					UAssetRefMap::GetInstance()->AllocationPawnRef->GetActorLocation(),
 					FRotator::ZeroRotator
 					);

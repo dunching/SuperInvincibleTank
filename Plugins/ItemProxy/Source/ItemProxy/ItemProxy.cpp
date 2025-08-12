@@ -2,7 +2,6 @@
 
 #include "AbilitySystemComponent.h"
 #include "InventoryComponentBase.h"
-#include "ItemProxyVisitorBase.h"
 #include "PAD_ItemProxyCollection.h"
 
 #include "ItemProxy_Description.h"
@@ -100,9 +99,9 @@ TSoftObjectPtr<UTexture2D> FBasicProxy::GetIcon() const
 {
 	auto SceneProxyExtendInfoPtr = GetTableRowProxy();
 
-	if (SceneProxyExtendInfoPtr->ItemProxy_Description.ToSoftObjectPath().IsAsset())
+	if (SceneProxyExtendInfoPtr.ItemProxy_Description.ToSoftObjectPath().IsAsset())
 	{
-		return SceneProxyExtendInfoPtr->ItemProxy_Description.LoadSynchronous()->DefaultIcon;
+		return SceneProxyExtendInfoPtr.ItemProxy_Description.LoadSynchronous()->DefaultIcon;
 	}
 	return nullptr;
 }
@@ -121,7 +120,7 @@ TObjectPtr<FBasicProxy::FItemProxy_Description> FBasicProxy::GetItemProxy_Descri
 {
 	auto TableRowPtr = GetTableRowProxy();
 
-	return TableRowPtr->ItemProxy_Description.LoadSynchronous();
+	return TableRowPtr.ItemProxy_Description.LoadSynchronous();
 }
 
 void FBasicProxy::SetInventoryComponentBase(
@@ -145,15 +144,15 @@ FString FBasicProxy::GetProxyName() const
 {
 	auto SceneProxyExtendInfoPtr = GetTableRowProxy();
 
-	if (SceneProxyExtendInfoPtr->ItemProxy_Description)
+	if (SceneProxyExtendInfoPtr.ItemProxy_Description)
 	{
-		return SceneProxyExtendInfoPtr->ItemProxy_Description.LoadSynchronous()->ProxyName;
+		return SceneProxyExtendInfoPtr.ItemProxy_Description.LoadSynchronous()->ProxyName;
 	}
 
 	return TEXT("");
 }
 
-const FTableRowProxy* FBasicProxy::GetTableRowProxy() const
+const FProxyDescriptionHelper FBasicProxy::GetTableRowProxy() const
 {
 	auto SceneProxyExtendInfoMapPtr = UPAD_ItemProxyCollection::GetInstance();
 	return SceneProxyExtendInfoMapPtr->GetTableRowProxy(ProxyType);

@@ -11,7 +11,7 @@
 class UInventoryComponent;
 
 USTRUCT()
-struct PROJECT_API FPlanet_BasicProxy : public FBasicProxy
+struct PROJECT_API FProject_BasicProxy : public FBasicProxy
 {
 	GENERATED_BODY()
 

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 
 #include "InputProcessorSubSystemBase.h"
+#include "PAD_ItemProxyCollection.h"
 
 #include "PlanetWorldSettings.generated.h"
 
@@ -24,7 +25,8 @@ class UPAD_ItemProxyCollection;
 UCLASS()
 class PROJECT_API APlanetWorldSettings :
 	public AWorldSettings,
-	public IGetInputProcessorSubSystemInterface
+	public IGetInputProcessorSubSystemInterface,
+	public IGetItemProxyCollectionInterface
 {
 	GENERATED_BODY()
 
@@ -40,6 +42,8 @@ public:
 
 	virtual UInputProcessorSubSystemBase* GetInputProcessorSubSystem()const override;
 	
+	virtual const UPAD_ItemProxyCollection*GetItemProxyCollection()const override;
+	
 protected:
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
@@ -47,5 +51,8 @@ protected:
 	
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
 	TSoftObjectPtr<UDataTableCollection>SceneProxyExtendInfoMapPtr;
+	
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
+	TSoftObjectPtr<UPAD_ItemProxyCollection>PAD_ItemProxyCollectionRef;
 	
 };

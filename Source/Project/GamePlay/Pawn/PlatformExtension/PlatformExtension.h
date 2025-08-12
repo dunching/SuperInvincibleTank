@@ -4,8 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
-
 #include "GameFramework/Character.h"
+
+#include "SceneActor.h"
 
 #include "PlatformExtension.generated.h"
 
@@ -24,7 +25,7 @@ public:
  */
 UCLASS()
 class PROJECT_API APlatformExtension :
-	public AActor
+	public ASceneActor
 {
 	GENERATED_BODY()
 

@@ -43,7 +43,7 @@ public:
  */
 USTRUCT()
 struct PROJECT_API FCoinProxy :
-	public FPlanet_BasicProxy,
+	public FProject_BasicProxy,
 	public IProxy_Allocationble,
 	public IProxy_Unique
 {

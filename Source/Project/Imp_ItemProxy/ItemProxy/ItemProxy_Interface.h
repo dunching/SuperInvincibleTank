@@ -15,7 +15,7 @@
 class ACharacterBase;
 
 struct FBasicProxy;
-struct FPlanet_BasicProxy;
+struct FProject_BasicProxy;
 struct FCharacterProxy;
 
 enum struct ECharacterPropertyType : uint8;
@@ -144,7 +144,7 @@ public:
 	FOnAllocationCharacterProxyChanged OnAllocationCharacterProxyChanged;
 
 protected:
-	FPlanet_BasicProxy*ProxyPtr = nullptr;
+	FProject_BasicProxy*ProxyPtr = nullptr;
 private:
 	// 被分配给的对象ID
 	FGuid AllocationCharacter_ID;

@@ -6,6 +6,7 @@
 #include "GameplayTagContainer.h"
 
 #include "ItemProxy_Descriptions.h"
+#include "ItemProxy_GenericType.h"
 
 #include "PAD_ItemProxyCollection.generated.h"
 
@@ -24,26 +25,6 @@ struct FTableRowProxy_TagExtendInfo;
 struct FTableRowProxy_CharacterGrowthAttribute;
 struct FTableRow_Regions;
 
-USTRUCT(BlueprintType)
-struct ITEMPROXY_API FTableRowProxy : public FTableRowBase
-{
-	GENERATED_USTRUCT_BODY()
-
-	/**
-	 * 这个Item使用哪个数据
-	 */
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
-	TSoftObjectPtr<UItemProxy_Description> ItemProxy_Description;
-
-	/**
-	 * 这个Item使用哪个Widget进行展示
-	 */
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
-	TSubclassOf<UItemDecriptionBaseWidget> ItemDecriptionClass;
-};
-
-ITEMPROXY_API const FTableRowProxy* GetTableRowProxy(const FGameplayTag &ProxyType);
-	
 UCLASS(BlueprintType, Blueprintable)
 class ITEMPROXY_API UPAD_ItemProxyCollection : public UPrimaryDataAsset
 {
@@ -52,13 +33,13 @@ class ITEMPROXY_API UPAD_ItemProxyCollection : public UPrimaryDataAsset
 public:
 	static const UPAD_ItemProxyCollection* GetInstance();
 	
-	const FTableRowProxy* GetTableRowProxy(FGameplayTag UnitType)const;
+	const FProxyDescriptionHelper GetTableRowProxy(FGameplayTag ProxyType)const;
 
 	/**
 	 * 可被持有的“物品”基础信息
 	 */
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "UnitExtendInfoMap")
-	TSoftObjectPtr<UDataTable> DataTable_Proxy;
+	TMap<FGameplayTag,FProxyDescriptionHelper> ProxyDescriptionMap;
 };
 
 UINTERFACE(MinimalAPI, meta = (CannotImplementInterfaceInBlueprint))

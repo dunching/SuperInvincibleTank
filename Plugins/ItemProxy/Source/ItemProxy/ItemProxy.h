@@ -57,50 +57,6 @@ struct FItemProxyVisitor_InAllocation_Base;
 enum struct ECharacterPropertyType : uint8;
 
 /**
- * ItemProxy的数值
- * 例如药剂类的数据，持续多长时间，每隔几秒回复多少血量
- */
-UCLASS()
-class ITEMPROXY_API UItemProxy_Description : public UDataAsset
-{
-	GENERATED_BODY()
-
-public:
-	/**
-	 * 简要说明
-	 */
-	UPROPERTY(BlueprintReadOnly, EditAnywhere)
-	FString Summary;
-
-	/**
-	 * 详细说明
-	 */
-	UPROPERTY(BlueprintReadOnly, EditAnywhere)
-	TArray<FString> DecriptionText;
-
-	/**
-	 * 数值
-	 */
-	UPROPERTY(BlueprintReadOnly, EditAnywhere)
-	TMap<FString, FPerLevelValue_Float> Values;
-
-	/**
-	 * 作为物品时的显示图片
-	 */
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
-	TSoftObjectPtr<UTexture2D> DefaultIcon;
-
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
-	FString ProxyName = TEXT("ProxyName");
-
-	/**
-	 * 立绘，
-	 */
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly)
-	TSoftObjectPtr<UTexture2D> RaffleIcon;
-};
-
-/**
  * 序列化&反序列化
  * 通用数据记录在DataTable，变化数据记录在对象内
  * 场景内的对象代理
@@ -202,7 +158,7 @@ private:
 	virtual bool IsUnique() const;
 
 protected:
-	const FTableRowProxy* GetTableRowProxy() const;
+	const FProxyDescriptionHelper GetTableRowProxy() const;
 
 	void SetID(
 		const IDType& NewID

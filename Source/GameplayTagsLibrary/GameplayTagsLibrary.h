@@ -21,12 +21,15 @@ public:
 	static FGameplayTag Proxy_Coin_Regular;
 
 	
+	static FGameplayTag Proxy_Platform_InLand;
+
+	static FGameplayTag Proxy_Platform_InLand_3X5;
+
+	static FGameplayTag Proxy_Platform_InLand_6X10;
+
+	static FGameplayTag Proxy_Extension_Weapon;
+
+	
 	static FGameplayTag UI_Allocation;
-
-	static FGameplayTag Platform_InLand;
-
-	static FGameplayTag Platform_InLand_3X5;
-
-	static FGameplayTag Platform_InLand_6X10;
 
 };
