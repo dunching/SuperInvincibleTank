@@ -62,6 +62,7 @@ public class Project : ModuleRules
 		
 		PublicIncludePaths.Add("Project/UI");
 		PublicIncludePaths.Add("Project/UI/Common");
+		PublicIncludePaths.Add("Project/UI/Common/DragDropOperations");
 		PublicIncludePaths.Add("Project/UI/Hover");
 		PublicIncludePaths.Add("Project/UI/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout");

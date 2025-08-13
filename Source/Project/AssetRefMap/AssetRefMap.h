@@ -12,6 +12,9 @@
 
 class APlatformCharacter;
 class AAllocationPawn;
+class UItemProxyDragDropOperationWidget;
+class UAllocationableProxyDragDropOperationWidget;
+class UItemProxyDragDropOperation;
 
 UCLASS(BlueprintType, Blueprintable)
 class PROJECT_API UAssetRefMap : public UAssetRefBase
@@ -28,4 +31,16 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TMap<FGameplayTag, TSubclassOf<APlatformCharacter>>PlatformCharacterMap;
+	
+#pragma region MenusUI
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "UI")
+	TSubclassOf<UItemProxyDragDropOperationWidget>DragDropOperationWidgetClass;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "UI")
+	TSubclassOf<UAllocationableProxyDragDropOperationWidget>AllocationableProxyDragDropOperationWidgetClass;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "UI")
+	TSubclassOf<UItemProxyDragDropOperation>ItemsDragDropOperationClass;
+#pragma endregion
+
 };
