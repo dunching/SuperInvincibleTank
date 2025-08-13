@@ -3,3 +3,4 @@
 #pragma once
 
 #include "ItemProxy_Coin.h"
+#include "ItemProxy_PlatformExtension.h"

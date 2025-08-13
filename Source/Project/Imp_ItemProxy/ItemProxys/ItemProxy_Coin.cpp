@@ -1,12 +1,12 @@
 
 #include "ItemProxy_Coin.h"
 
-FCoinProxy::FCoinProxy()
+FItemProxy_Coin::FItemProxy_Coin()
 {
 
 }
 
-bool FCoinProxy::NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess)
+bool FItemProxy_Coin::NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSuccess)
 {
 	Super::NetSerialize(Ar, Map, bOutSuccess);
 	NetSerialize_Allocationble(Ar, Map, bOutSuccess);
@@ -15,7 +15,7 @@ bool FCoinProxy::NetSerialize(FArchive& Ar, class UPackageMap* Map, bool& bOutSu
 	return true;
 }
 
-void FCoinProxy::InitialProxy(
+void FItemProxy_Coin::InitialProxy(
 	const FGameplayTag& InProxyType
 	)
 {
@@ -24,8 +24,8 @@ void FCoinProxy::InitialProxy(
 	ProxyPtr = this;
 }
 
-void FCoinProxy::UpdateByRemote(
-	const TSharedPtr<FCoinProxy>& RemoteSPtr
+void FItemProxy_Coin::UpdateByRemote(
+	const TSharedPtr<FItemProxy_Coin>& RemoteSPtr
 	)
 {
 	Super::UpdateByRemote(RemoteSPtr);
@@ -36,7 +36,7 @@ void FCoinProxy::UpdateByRemote(
 	UpdateByRemote_Unique(RemoteSPtr);
 }
 
-void FCoinProxy::ModifyNum(
+void FItemProxy_Coin::ModifyNum(
 	int32 Value
 	)
 {
@@ -45,7 +45,7 @@ void FCoinProxy::ModifyNum(
 	UpdateData();
 }
 
-bool FCoinProxy::IsUnique() const
+bool FItemProxy_Coin::IsUnique() const
 {
 	return true;
 }

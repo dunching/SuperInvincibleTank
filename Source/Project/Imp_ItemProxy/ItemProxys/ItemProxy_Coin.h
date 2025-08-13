@@ -42,7 +42,7 @@ public:
  * 货币道具
  */
 USTRUCT()
-struct PROJECT_API FCoinProxy :
+struct PROJECT_API FItemProxy_Coin :
 	public FProject_BasicProxy,
 	public IProxy_Allocationble,
 	public IProxy_Unique
@@ -50,7 +50,7 @@ struct PROJECT_API FCoinProxy :
 	GENERATED_USTRUCT_BODY()
 
 public:
-	FCoinProxy();
+	FItemProxy_Coin();
 
 	virtual bool NetSerialize(
 		FArchive& Ar,
@@ -63,7 +63,7 @@ public:
 		) override;
 
 	void UpdateByRemote(
-		const TSharedPtr<FCoinProxy>& RemoteSPtr
+		const TSharedPtr<FItemProxy_Coin>& RemoteSPtr
 		);
 
 #pragma region IProxy_Unique
@@ -77,8 +77,8 @@ protected:
 };
 
 template <>
-struct TStructOpsTypeTraits<FCoinProxy> :
-	public TStructOpsTypeTraitsBase2<FCoinProxy>
+struct TStructOpsTypeTraits<FItemProxy_Coin> :
+	public TStructOpsTypeTraitsBase2<FItemProxy_Coin>
 {
 	enum
 	{

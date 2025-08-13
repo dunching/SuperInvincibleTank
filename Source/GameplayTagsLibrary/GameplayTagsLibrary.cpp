@@ -18,6 +18,9 @@ FGameplayTag UGameplayTagsLibrary::Proxy_Platform_InLand_3X5 =
 FGameplayTag UGameplayTagsLibrary::Proxy_Platform_InLand_6X10 =
 	FGameplayTag::RequestGameplayTag(FName(TEXT("Proxy.Platform.InLand.6X10")));
 
+FGameplayTag UGameplayTagsLibrary::Proxy_Extension =
+	FGameplayTag::RequestGameplayTag(FName(TEXT("Proxy.Extension")));
+
 FGameplayTag UGameplayTagsLibrary::Proxy_Extension_Weapon =
 	FGameplayTag::RequestGameplayTag(FName(TEXT("Proxy.Extension.Weapon")));
 

@@ -60,6 +60,14 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/Common");
 		PublicIncludePaths.Add("Project/AssetRefMap");
 		
+		PublicIncludePaths.Add("Project/UI");
+		PublicIncludePaths.Add("Project/UI/Hover");
+		PublicIncludePaths.Add("Project/UI/Layout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/StartingLayout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/AllocationLayout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/PlayingLayout");
+
 		PublicIncludePaths.Add("Project/Imp_InputProcessor");
 		PublicIncludePaths.Add("Project/Imp_InputProcessor/InputProcessor");
 
@@ -69,14 +77,10 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/Imp_ItemProxy/ItemProxy");
 		PublicIncludePaths.Add("Project/Imp_ItemProxy/Visitor");
 
-		PublicIncludePaths.Add("Project/UI");
-		PublicIncludePaths.Add("Project/UI/Hover");
-		PublicIncludePaths.Add("Project/UI/Layout");
-		PublicIncludePaths.Add("Project/UI/Layout/Layout");
-		PublicIncludePaths.Add("Project/UI/Layout/Layout/StartingLayout");
-		PublicIncludePaths.Add("Project/UI/Layout/Layout/AllocationLayout");
-		PublicIncludePaths.Add("Project/UI/Layout/Layout/PlayingLayout");
-		
+		PublicIncludePaths.Add("Project/Imp_GroupManagger");
+		PublicIncludePaths.Add("Project/Imp_GroupManagger/GroupManagger");
+		PublicIncludePaths.Add("Project/Imp_GroupManagger/TeamMatesHelper");
+
 		PrivateIncludePaths.Add("Project/Private");
 
 		if (Target.bBuildEditor == true)

@@ -7,6 +7,7 @@
 
 #include <AIController.h>
 
+#include "GroupManaggerInterface.h"
 #include "HumanCharacter_AI.h"
 #include "PlanetControllerInterface.h"
 
@@ -21,7 +22,8 @@ class UPixelStreamingInput;
 UCLASS()
 class PROJECT_API APlanetPlayerController :
 	public APlayerController,
-	public IPlanetControllerInterface
+	public IPlanetControllerInterface,
+	public IGroupManaggerInterface
 {
 	GENERATED_BODY()
 
@@ -31,6 +33,8 @@ public:
 		const FObjectInitializer& ObjectInitializer
 		);
 
+	virtual void PostInitializeComponents() override;
+
 	virtual void BeginPlay() override;
 
 	virtual void OnPossess(
@@ -38,12 +42,34 @@ public:
 		) override;
 	
 	virtual void OnRep_Pawn() override;
+	
+	virtual void GetLifetimeReplicatedProps(
+		TArray<FLifetimeProperty>& OutLifetimeProps
+		) const override;
+
+	virtual AGroupManagger* GetGroupManagger() const override;
 
 #pragma region RPC
 	UFUNCTION(Server,Reliable)
 	void Possess_Server(APawn* InPawn);
+	
+	UFUNCTION(Server, Reliable)
+	void AddProxy_Server(
+		const FGameplayTag& ProxyType,
+		int32 Num
+		);
+
 #pragma endregion 
 	
+	// 初始化共享信息相关的内容
+	virtual void InitialGroupManagger();
+
+	UFUNCTION()
+	void OnRep_GroupManagger();
+
+	UPROPERTY(ReplicatedUsing = OnRep_GroupManagger)
+	TObjectPtr<AGroupManagger> GroupManaggerPtr = nullptr;
+
 	UPROPERTY()
 	TObjectPtr<UPlayerControllerGameplayTasksComponent> GameplayTasksComponentPtr = nullptr;
 

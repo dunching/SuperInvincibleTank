@@ -23,17 +23,8 @@ class GROUPMANAGGER_API IGroupManaggerInterface
 
 public:
 
-	/**
-	 * 当这个Cotroller或Character上的GroupManagger就绪时
-	 * @param NewGroupSharedInfoPtr 
-	 */
-	virtual void OnSelfGroupManaggerReady(AGroupManagger* NewGroupSharedInfoPtr) = 0;
-
-	/**
-	 * 当玩家的GroupManagger就绪时
-	 * @param NewGroupSharedInfoPtr 
-	 */
-	virtual void OnPlayerGroupManaggerReady(AGroupManagger* NewGroupSharedInfoPtr) = 0;
+	// 
+	virtual AGroupManagger* GetGroupManagger() const = 0;
 
 protected:
 

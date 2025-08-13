@@ -17,12 +17,18 @@ void UInventoryComponent::InitializeComponent()
 		                                 ModifyItemProxyStrategySPtr
 		                                );
 	}
+	{
+		auto ModifyItemProxyStrategySPtr = MakeShared<FModifyItemProxyStrategy_PlatformExtension>();
+		ModifyItemProxyStrategiesMap.Add(
+		                                 ModifyItemProxyStrategySPtr->GetCanOperationType(),
+		                                 ModifyItemProxyStrategySPtr
+		                                );
+	}
 }
 
 void UInventoryComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
 
 #if UE_EDITOR || UE_SERVER
 	if (GetNetMode() == NM_DedicatedServer)
@@ -33,14 +39,7 @@ void UInventoryComponent::BeginPlay()
 #endif
 }
 
-void UInventoryComponent::OnSelfGroupManaggerReady(
-	AGroupManagger* NewGroupSharedInfoPtr
-	)
+AGroupManagger* UInventoryComponent::GetGroupManagger() const
 {
-}
-
-void UInventoryComponent::OnPlayerGroupManaggerReady(
-	AGroupManagger* NewGroupSharedInfoPtr
-	)
-{
+	return nullptr;
 }

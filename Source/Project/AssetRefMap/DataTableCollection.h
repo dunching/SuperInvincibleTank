@@ -15,7 +15,7 @@ class UPAD_Talent_Property;
 struct FToolProxy;
 struct FWeaponProxy;
 struct FSkillProxy;
-struct FCoinProxy;
+struct FItemProxy_Coin;
 struct FBasicProxy;
 
 struct FTableRowProxy_TagExtendInfo;

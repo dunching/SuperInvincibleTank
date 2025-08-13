@@ -13,7 +13,7 @@
 #include "TemplateHelper.h"
 #include "ItemProxy_Minimal.h"
 
-struct FCoinProxy;
+struct FItemProxy_Coin;
 struct FConsumableProxy;
 struct FCharacterProxy;
 struct FWeaponProxy;
@@ -22,9 +22,9 @@ struct FPassiveSkillProxy;
 struct FActiveSkillProxy;
 struct FWeaponSkillProxy;
 
-struct PROJECT_API FModifyItemProxyStrategy_Coin : public FModifyItemProxyStrategyBase<FCoinProxy>
+struct PROJECT_API FModifyItemProxyStrategy_Coin : public FModifyItemProxyStrategyBase<FItemProxy_Coin>
 {
-	using FItemProxyType = FCoinProxy;
+	using FItemProxyType = FItemProxy_Coin;
 
 	using FOnCoinProxyChanged = TCallbackHandleContainer<void(
 		const TSharedPtr<
@@ -63,6 +63,40 @@ struct PROJECT_API FModifyItemProxyStrategy_Coin : public FModifyItemProxyStrate
 		) override;
 
 	FOnCoinProxyChanged OnCoinProxyChanged;
+
+	TMap<FGameplayTag, TArray<TSharedPtr<FItemProxyType>>> ProxyTypeMap;
+};
+
+struct PROJECT_API FModifyItemProxyStrategy_PlatformExtension : public FModifyItemProxyStrategyBase<
+		FItemProxy_PlatformExtension>
+{
+	using FItemProxyType = FItemProxy_PlatformExtension;
+
+	using FOnProxyChanged = TCallbackHandleContainer<void(
+		const TSharedPtr<
+			FItemProxyType>&,
+		EProxyModifyType
+		)>;
+
+	virtual FGameplayTag GetCanOperationType() const override;
+
+	virtual TArray<TSharedPtr<FBasicProxy>> FindByType(
+		const FGameplayTag& ProxyType,
+		const TObjectPtr<const UInventoryComponentBase>& InventoryComponentPtr
+		) const override;
+
+	virtual TArray<TSharedPtr<FBasicProxy>> Add(
+		const TObjectPtr<UInventoryComponentBase>& InventoryComponentPtr,
+		const FGameplayTag& InProxyType,
+		int32 Num
+		) override;
+
+	virtual TSharedPtr<FBasicProxy> AddByRemote(
+		const TObjectPtr<UInventoryComponentBase>& InventoryComponentPtr,
+		const TSharedPtr<FBasicProxy>& RemoteProxySPtr
+		) override;
+
+	FOnProxyChanged OnProxyChanged;
 
 	TMap<FGameplayTag, TArray<TSharedPtr<FItemProxyType>>> ProxyTypeMap;
 };

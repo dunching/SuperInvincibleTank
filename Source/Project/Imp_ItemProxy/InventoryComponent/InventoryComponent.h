@@ -41,12 +41,6 @@ public:
 
 	virtual void BeginPlay() override;
 
-	virtual void OnSelfGroupManaggerReady(
-		AGroupManagger* NewGroupSharedInfoPtr
-		) override;
-
-	virtual void OnPlayerGroupManaggerReady(
-		AGroupManagger* NewGroupSharedInfoPtr
-		) override;
+	virtual AGroupManagger* GetGroupManagger() const override;
 
 };

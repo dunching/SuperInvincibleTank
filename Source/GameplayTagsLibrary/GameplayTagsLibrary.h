@@ -27,6 +27,8 @@ public:
 
 	static FGameplayTag Proxy_Platform_InLand_6X10;
 
+	static FGameplayTag Proxy_Extension;
+
 	static FGameplayTag Proxy_Extension_Weapon;
 
 	

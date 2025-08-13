@@ -118,3 +118,58 @@ void FModifyItemProxyStrategy_Coin::RemoveByRemote(
 	                                  0
 	                                 );
 }
+
+
+FGameplayTag FModifyItemProxyStrategy_PlatformExtension::GetCanOperationType() const
+{
+	return UGameplayTagsLibrary::Proxy_Extension;
+}
+
+TArray<TSharedPtr<FBasicProxy>> FModifyItemProxyStrategy_PlatformExtension::FindByType(
+	const FGameplayTag& ProxyType,
+	const TObjectPtr<const UInventoryComponentBase>& InventoryComponentPtr
+	) const
+{
+	TArray<TSharedPtr<FBasicProxy>> Result;
+	if (ProxyTypeMap.Contains(ProxyType))
+	{
+		Result.Append(ProxyTypeMap[ProxyType]);
+	}
+
+	return Result;
+}
+
+TArray<TSharedPtr<FBasicProxy>> FModifyItemProxyStrategy_PlatformExtension::Add(
+	const TObjectPtr<UInventoryComponentBase>& InventoryComponentPtr,
+	const FGameplayTag& InProxyType,
+	int32 Num
+	)
+{
+	auto NewResultSPtr = MakeShared<FItemProxyType>();
+
+	NewResultSPtr->SetInventoryComponentBase(InventoryComponentPtr);
+	NewResultSPtr->InitialProxy(InProxyType);
+
+	InventoryComponentPtr->AddToContainer(NewResultSPtr);
+
+	OnProxyChanged(NewResultSPtr, EProxyModifyType::kAdd);
+
+	return {NewResultSPtr};
+}
+
+TSharedPtr<FBasicProxy> FModifyItemProxyStrategy_PlatformExtension::AddByRemote(
+	const TObjectPtr<UInventoryComponentBase>& InventoryComponentPtr,
+	const TSharedPtr<FBasicProxy>& InRemoteProxySPtr
+	)
+{
+	auto NewResultSPtr = DynamicCastSharedPtr<FItemProxyType>(
+															  FModifyItemProxyStrategyBase<FItemProxyType>::AddByRemote(
+																   InventoryComponentPtr,
+																   InRemoteProxySPtr
+																  )
+															 );
+
+	OnProxyChanged.ExcuteCallback(NewResultSPtr, EProxyModifyType::kPropertyChange);
+
+	return NewResultSPtr;
+}
