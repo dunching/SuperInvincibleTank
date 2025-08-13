@@ -15,6 +15,7 @@
 
 class UPlayerControllerGameplayTasksComponent;
 class UPixelStreamingInput;
+class AGroupManaggerImp;
 
 /**
  *
@@ -49,6 +50,8 @@ public:
 
 	virtual AGroupManagger* GetGroupManagger() const override;
 
+	virtual UInventoryComponent* GetInventoryComponent() const override;
+
 #pragma region RPC
 	UFUNCTION(Server,Reliable)
 	void Possess_Server(APawn* InPawn);
@@ -68,7 +71,7 @@ public:
 	void OnRep_GroupManagger();
 
 	UPROPERTY(ReplicatedUsing = OnRep_GroupManagger)
-	TObjectPtr<AGroupManagger> GroupManaggerPtr = nullptr;
+	TObjectPtr<AGroupManaggerImp> GroupManaggerPtr = nullptr;
 
 	UPROPERTY()
 	TObjectPtr<UPlayerControllerGameplayTasksComponent> GameplayTasksComponentPtr = nullptr;

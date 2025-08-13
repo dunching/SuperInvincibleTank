@@ -30,4 +30,6 @@ class PROJECT_API IPlanetControllerInterface
 
 public:
 
+	virtual UInventoryComponent* GetInventoryComponent()const = 0;
+
 };

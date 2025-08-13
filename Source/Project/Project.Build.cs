@@ -61,11 +61,14 @@ public class Project : ModuleRules
 		PublicIncludePaths.Add("Project/AssetRefMap");
 		
 		PublicIncludePaths.Add("Project/UI");
+		PublicIncludePaths.Add("Project/UI/Common");
 		PublicIncludePaths.Add("Project/UI/Hover");
 		PublicIncludePaths.Add("Project/UI/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout/StartingLayout");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout/AllocationLayout");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/AllocationLayout/InteractionList");
+		PublicIncludePaths.Add("Project/UI/Layout/Layout/AllocationLayout/ItemDetails");
 		PublicIncludePaths.Add("Project/UI/Layout/Layout/PlayingLayout");
 
 		PublicIncludePaths.Add("Project/Imp_InputProcessor");
@@ -129,6 +132,7 @@ public class Project : ModuleRules
 			"GroupManagger",
 			"SceneActor",
 			"NetAbilitySystem",
+			"PropertyEntrySystem",
 			
 			// 其他模块
 			"AssetRef",
@@ -138,16 +142,5 @@ public class Project : ModuleRules
 			"Tools",
 		});
 
-		PublicDependencyModuleNames.AddRange(new string[]
-		{
-		});
-
-		PrivateIncludePathModuleNames.AddRange(new string[]
-		{
-		});
-
-		PublicIncludePathModuleNames.AddRange(new string[]
-		{
-		});
 	}
 }

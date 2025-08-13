@@ -71,6 +71,11 @@ AGroupManagger* APlanetPlayerController::GetGroupManagger() const
 	return GroupManaggerPtr;
 }
 
+UInventoryComponent* APlanetPlayerController::GetInventoryComponent() const
+{
+	return GroupManaggerPtr ? GroupManaggerPtr->GetInventoryComponent() : nullptr;
+}
+
 void APlanetPlayerController::InitialGroupManagger()
 {
 #if UE_EDITOR || UE_SERVER

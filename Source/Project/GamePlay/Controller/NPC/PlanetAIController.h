@@ -23,8 +23,7 @@ class USplineComponent;
 
 UCLASS()
 class PROJECT_API APlanetAIController :
-	public AAIController,
-	public IPlanetControllerInterface
+	public AAIController
 {
 	GENERATED_BODY()
 
